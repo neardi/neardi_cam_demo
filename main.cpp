@@ -56,6 +56,15 @@ static int camera_thread(int cam_id) {
                           + std::to_string(height)
                           + ",framerate=30/1 ! videoconvert ! video/x-raw,format=BGR ! appsink";
 
+    /**
+     * load hdmiin
+     * RK3588: gst-launch-1.0 v4l2src device=/dev/video40 ! kmssink plane-id=54 -v
+     */
+    /** std::string capfmt = "v4l2src device=/dev/video"
+                          + std::to_string(cam_id)
+                          + " ! videoconvert ! video/x-raw,format=BGR ! appsink";
+    */
+
     cv::VideoCapture cap(capfmt, cv::CAP_GSTREAMER);
     if (!cap.isOpened()) {
         std::cout << "please open camera first!" << std::endl;
