@@ -65,6 +65,14 @@ static int camera_thread(int cam_id) {
                           + " ! videoconvert ! video/x-raw,format=BGR ! appsink";
     */
 
+    /**
+     * USB camera
+     */
+    /** std::string usbcap = "v4l2src device=/dev/video"
+                          + std::to_string(cam_id)
+                          + " ! videoconvert ! appsink";
+    */
+
     cv::VideoCapture cap(capfmt, cv::CAP_GSTREAMER);
     if (!cap.isOpened()) {
         std::cout << "please open camera first!" << std::endl;
